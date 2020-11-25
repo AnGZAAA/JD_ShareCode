@@ -67,7 +67,7 @@ function showMsg() {
     return new Promise(async resolve => {
         console.log($.shareCode)
         try {
-            await $.http.get({ url: `https://cdn.jsdelivr.net/gh/799953468/updateTeam@master/jd_updateSmallHomeInviteCode.json` }).then((resp) => {
+            await $.http.get({ url: `https://cdn.jsdelivr.net/gh/799953468/JD_ShareCode@master/jd_updateSmallHomeInviteCode.json` }).then((resp) => {
                 if (resp.statusCode === 200) {
                     console.log(`已刷新CDN缓存`)
                 } else {

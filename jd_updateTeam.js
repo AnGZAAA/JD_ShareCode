@@ -41,7 +41,7 @@ function showMsg() {
         try {
             console.log(`等待五秒后刷新CDN缓存`);
             await $.wait(5000);
-            await $.http.get({ url: `https://cdn.jsdelivr.net/gh/799953468/updateTeam@master/jd_updateTeam.json` }).then((resp) => {
+            await $.http.get({ url: `https://cdn.jsdelivr.net/gh/799953468/JD_ShareCode@master/jd_updateTeam.json` }).then((resp) => {
                 if (resp.statusCode === 200) {
                     console.log(`已刷新CDN缓存`)
                 } else {
