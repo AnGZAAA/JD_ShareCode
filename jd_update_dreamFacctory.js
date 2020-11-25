@@ -5,6 +5,7 @@
 cron 15 * * * * https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_dreamFactory.js
 */
 const $ = new Env('更新京喜工厂互助码');
+const fs = require('fs');
 const JD_API_HOST = 'https://m.jingxi.com';
 const notify = $.isNode() ? require('./sendNotify') : '';
 
@@ -88,7 +89,7 @@ function userInfo() {
 
 async function showMsg() {
     return new Promise(async resolve => {
-        console.log($.shareCode)
+        console.log($.inviteCode)
         try {
             await $.http.get({ url: `https://cdn.jsdelivr.net/gh/799953468/updateTeam@master/jd_dreamFactoryInviteCode.json` }).then((resp) => {
                 if (resp.statusCode === 200) {
