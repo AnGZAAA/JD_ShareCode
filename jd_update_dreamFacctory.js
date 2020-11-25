@@ -75,7 +75,7 @@ function userInfo() {
             if (data['ret'] === 0) {
                 data = data['data'];
                 if (data.factoryList && data.productionList) {
-                    $.inviteCode = data.user.encryptPin;
+                    $.inviteCode = [...($.inviteCode || []), ...[data.user.encryptPin]];
                 } else {
                     $.unActive = true; //标记是否开启了此活动
                     console.log('【提示】此账号京喜工厂活动未开始\n请手动去京东APP->游戏与互动->查看更多->京喜工厂 开启活动\n');
