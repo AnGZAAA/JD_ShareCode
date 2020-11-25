@@ -71,6 +71,7 @@ if ($.isNode()) {
 async function jdDreamFactory() {
     ele = 0;
     await userInfo();
+    await writeFile();
     await showMsg();
 }
 
@@ -119,7 +120,7 @@ async function writeFile() {
     const info = {
         "inviteCode": $.data.user.encryptPin || [],
     }
-    await fs.writeFileSync('jd_dreamFactoryInviteCode.json.json', JSON.stringify(info));
+    await fs.writeFileSync('jd_dreamFactoryInviteCode.json', JSON.stringify(info));
     console.log(`文件写入成功,inviteCode已经替换`);
 }
 
