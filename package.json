@@ -1,0 +1,23 @@
+{
+    "name": "799953468",
+    "version": "1.0.0",
+    "description": "",
+    "main": "jdCookie.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/799953468/JD_ShareCode.git"
+    },
+    "author": "799953468",
+    "license": "ISC",
+    "dependencies": {
+        "crypto-js": "^4.0.0",
+        "got": "^11.8.0",
+        "tough-cookie": "^4.0.0",
+        "http-server": "^0.12.3",
+        "download": "^8.0.0",
+        "request": "^2.88.2"
+    }
+}
