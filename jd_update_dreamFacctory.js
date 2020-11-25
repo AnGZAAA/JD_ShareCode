@@ -3,23 +3,13 @@
 活动入口 :京东APP->游戏与互动->查看更多->京喜工厂
 或者: 京东APP首页搜索 "玩一玩" ,造物工厂即可
 cron 15 * * * * https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_dreamFactory.js
- */
-
-
-const $ = new Env('京喜工厂');
+*/
+const $ = new Env('更新京喜工厂互助码');
 const JD_API_HOST = 'https://m.jingxi.com';
-
-let ele, factoryId, productionId;
-
-let message = '',
-    subTitle = '',
-    option = {};
 const notify = $.isNode() ? require('./sendNotify') : '';
-let jdNotify = true; //是否关闭通知，false打开通知推送，true关闭通知推送
 
 let cookiesArr = [],
     cookie = '';
-const inviteCodes = [];
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 if ($.isNode()) {
     Object.keys(jdCookieNode).forEach((item) => {
@@ -84,8 +74,7 @@ function userInfo() {
             if (data['ret'] === 0) {
                 data = data['data'];
                 if (data.factoryList && data.productionList) {
-                    const production = data.productionList[0];
-                    const factory = data.factoryList[0];
+                    $.inviteCode = data.user.encryptPin;
                 } else {
                     $.unActive = true; //标记是否开启了此活动
                     console.log('【提示】此账号京喜工厂活动未开始\n请手动去京东APP->游戏与互动->查看更多->京喜工厂 开启活动\n');
@@ -118,7 +107,7 @@ async function showMsg() {
 
 async function writeFile() {
     const info = {
-        "inviteCode": $.data.user.encryptPin || [],
+        "inviteCode": $.inviteCode || [],
     }
     await fs.writeFileSync('jd_dreamFactoryInviteCode.json', JSON.stringify(info));
     console.log(`文件写入成功,inviteCode已经替换`);
