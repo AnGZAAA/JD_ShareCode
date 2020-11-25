@@ -7,10 +7,10 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '0 0-23/1 * * *'
-  wathc:
+  watch:
   push:
     types: started
-  repository_dispath:
+  repository_dispatch:
   pull_request:
     types: JD_ShareCode
 
