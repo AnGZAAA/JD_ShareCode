@@ -72,7 +72,6 @@ jobs:
           assignees: ${{ secrets.NAME }}
           reviewers: ${{ secrets.NAME }}
           draft: false
-          push-to-fork: 799953468/JD_ShareCode
 
       - if: github.event.repository.owner.id != 799953468
         name: Create Pull Request
