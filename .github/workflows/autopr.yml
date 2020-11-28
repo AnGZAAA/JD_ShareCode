@@ -17,6 +17,7 @@ jobs:
         with:
           node-version: 10.x
       - name: set env
+        run: echo set env
         env:
           user: ${{ secrets.NAME }}
       - name: npm install
