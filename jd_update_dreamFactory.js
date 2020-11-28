@@ -89,7 +89,6 @@ function userInfo() {
 
 async function showMsg() {
     return new Promise(async resolve => {
-        console.log($.inviteCode)
         try {
             await $.http.get({ url: `https://cdn.jsdelivr.net/gh/799953468/updateTeam@master/jd_dreamFactoryInviteCode.json` }).then((resp) => {
                 if (resp.statusCode === 200) {
@@ -107,11 +106,13 @@ async function showMsg() {
 }
 
 async function writeFile() {
-    const info = {
-        "inviteCode": $.inviteCode || [],
+    let data = fs.readFileSync('./shareCodes/jd_updatedreamFactoryInviteCode.json', 'utf8');
+    $.inviteCodes = JSON.parse(data);
+    if ($.inviteCode) {
+        $.inviteCodes.inviteCode.push($.inviteCode.toString());
     }
-    await fs.writeFileSync('./shareCodes/jd_dreamFactoryInviteCode.json', JSON.stringify(info));
-    console.log(`文件写入成功,inviteCode已经替换`);
+    await fs.writeFileSync('./shareCodes/jd_updatedreamFactoryInviteCode.json', JSON.stringify($.inviteCodes));
+    console.log(`文件写入成功,inviteCode已经更新`);
 }
 
 function taskurl(url) {

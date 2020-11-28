@@ -81,11 +81,13 @@ function showMsg() {
     })
 }
 async function writeFile() {
-    const info = {
-        "inviteCode": $.shareCode || [],
-    }
-    await fs.writeFileSync('./shareCodes/jd_updateSmallHomeInviteCode.json', JSON.stringify(info));
-    console.log(`文件写入成功,inviteCode已经替换`);
+    // const info = {
+    //     "inviteCode": $.shareCode || [],
+    // }
+    let data = fs.readFileSync('./shareCodes/jd_updateSmallHomeInviteCode.json', 'utf8');
+    $.inviteCodes = JSON.parse(data);
+    // await fs.writeFileSync('./shareCodes/jd_updateSmallHomeInviteCode.json', JSON.stringify(info));
+    // console.log(`文件写入成功,inviteCode已经替换`);
 }
 
 function createInviteUser() {
