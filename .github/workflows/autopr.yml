@@ -5,14 +5,6 @@ name: update_ShareCodes
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 0-23/1 * * *'
-  watch:
-  push:
-    types: started
-  repository_dispatch:
-  pull_request:
-    types: JD_ShareCode
 
 jobs:
   createPullRequest:
@@ -45,7 +37,7 @@ jobs:
           DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
       - name: '运行 【更新京喜工厂邀请码】'
         run: |
-          node jd_update_dreamFacctory.js
+          node jd_update_dreamFactory.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
