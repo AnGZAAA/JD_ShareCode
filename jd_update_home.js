@@ -84,7 +84,7 @@ async function writeFile() {
     const info = {
         "inviteCode": $.shareCode || [],
     }
-    await fs.writeFileSync('jd_updateSmallHomeInviteCode.json', JSON.stringify(info));
+    await fs.writeFileSync('./shareCodes/jd_updateSmallHomeInviteCode.json', JSON.stringify(info));
     console.log(`文件写入成功,inviteCode已经替换`);
 }
 

@@ -81,7 +81,7 @@ async function writeFile() {
                     pkActivityId,
                     "Teams": $.teamIdArr || [].push({ teamId, inviteCode }),
                 }
-                await fs.writeFileSync('jd_updateTeam.json', JSON.stringify(info));
+                await fs.writeFileSync('./shareCodes/jd_updateTeam.json', JSON.stringify(info));
                 console.log(`文件写入成功，新的teamId:[${teamId}]和pkActivityId:[${info.pkActivityId}]已经替换`);
             }
         }
