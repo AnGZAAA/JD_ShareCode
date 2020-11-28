@@ -44,13 +44,12 @@ jobs:
           DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
           DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
 
-      - if: secrets.NAME == 799953468
+      - if: GITHUB_ACTOR == 799953468
         name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
           token: ${{ secrets.TOKEN }}
           commit-message: Update shareCode
-          committer: GitHub <799953468@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           signoff: false
           branch: temp
@@ -65,13 +64,12 @@ jobs:
           reviewers: ${{ secrets.NAME }}
           draft: false
 
-      - if: secrets.NAME != 799953468
+      - if: GITHUB_ACTOR != 799953468
         name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
           token: ${{ secrets.TOKEN }}
           commit-message: Update shareCode
-          committer: GitHub <799953468@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           signoff: false
           branch: temp
