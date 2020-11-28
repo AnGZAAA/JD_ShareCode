@@ -19,13 +19,6 @@ jobs:
         with:
           node-version: 10.x
 
-      - name: Update shareCodes
-        run: |
-          git config core.sparsecheckout true
-          echo 'shareCodes' >> .git/info/sparse-checkout
-          git remote add origin https://github.com/799953468/JD_ShareCode.git
-          git pull origin master
-
       - name: npm install
         run: |
           npm install
