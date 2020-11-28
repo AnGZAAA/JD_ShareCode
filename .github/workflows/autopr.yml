@@ -43,7 +43,7 @@ jobs:
 
       - name: '运行 【更新京喜工厂邀请码】'
         run: |
-          node jd_update_dreamFacctory.js
+          node jd_update_dreamFactory.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
