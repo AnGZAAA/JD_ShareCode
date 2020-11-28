@@ -27,15 +27,6 @@ jobs:
         run: |
           npm install
 
-      - name: '运行 【更新京小超PK信息】'
-        run: |
-          node jd_updateTeam.js
-        env:
-          JD_COOKIE: ${{ secrets.JD_COOKIE }}
-          JD_DEBUG: ${{ secrets.JD_DEBUG }}
-          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
-          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
-
       - name: '运行 【更新东东小窝信息】'
         run: |
           node jd_update_home.js
