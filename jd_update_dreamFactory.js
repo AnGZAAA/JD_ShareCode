@@ -90,7 +90,7 @@ function userInfo() {
 async function showMsg() {
     return new Promise(async resolve => {
         try {
-            await $.http.get({ url: `https://cdn.jsdelivr.net/gh/799953468/updateTeam@master/jd_dreamFactoryInviteCode.json` }).then((resp) => {
+            await $.http.get({ url: `https://cdn.jsdelivr.net/gh/799953468/JD_ShareCode@master/jd_dreamFactoryInviteCode.json` }).then((resp) => {
                 if (resp.statusCode === 200) {
                     console.log(`已刷新CDN缓存`)
                 } else {
