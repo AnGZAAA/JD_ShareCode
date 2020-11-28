@@ -58,6 +58,9 @@ jobs:
         uses: TickX/auto-cross-pr@v0.1.3
         with:
           token: ${{ secrets.TOKEN }}
-          item: shareCodes
+          item: shareCodes/
           repo: JD_ShareCode
           repo_owner: 799953468
+          commit_author: ${{ secrets.NAME }}
+          commit_email: ${{ secrets.EMAIL }}
+          pr_title: 'Update shareCodes'
