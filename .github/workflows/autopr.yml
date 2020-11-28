@@ -16,6 +16,9 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 10.x
+      - name: set env
+        env:
+          user: ${{ secrets.NAME }}
       - name: npm install
         run: |
           npm install
@@ -44,7 +47,7 @@ jobs:
           DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
           DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
 
-      - if: GITHUB_ACTOR == 799953468
+      - if: user == 799953468
         name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
@@ -64,7 +67,7 @@ jobs:
           reviewers: ${{ secrets.NAME }}
           draft: false
 
-      - if: GITHUB_ACTOR != 799953468
+      - if: user != 799953468
         name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
