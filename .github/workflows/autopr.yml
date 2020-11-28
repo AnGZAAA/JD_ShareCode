@@ -44,7 +44,7 @@ jobs:
           DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
           DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
 
-      - if: github.event.repository.owner.id == 799953468
+      - if: ${{ secrets.NAME }} == 799953468
         name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
@@ -65,7 +65,7 @@ jobs:
           reviewers: ${{ secrets.NAME }}
           draft: false
 
-      - if: github.event.repository.owner.id != 799953468
+      - if: ${{ secrets.NAME }} != 799953468
         name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
