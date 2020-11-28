@@ -64,3 +64,4 @@ jobs:
           commit_author: ${{ secrets.NAME }}
           commit_email: ${{ secrets.EMAIL }}
           pr_title: 'Update shareCodes'
+          repo_base_branch: tmp
