@@ -81,13 +81,13 @@ function showMsg() {
     })
 }
 async function writeFile() {
-    // const info = {
-    //     "inviteCode": $.shareCode || [],
-    // }
     let data = fs.readFileSync('./shareCodes/jd_updateSmallHomeInviteCode.json', 'utf8');
     $.inviteCodes = JSON.parse(data);
-    // await fs.writeFileSync('./shareCodes/jd_updateSmallHomeInviteCode.json', JSON.stringify(info));
-    // console.log(`文件写入成功,inviteCode已经替换`);
+    if ($.shareCode) {
+        $.inviteCodes.inviteCode.push($.shareCode.toString());
+    }
+    await fs.writeFileSync('./shareCodes/jd_updateSmallHomeInviteCode.json', JSON.stringify($.inviteCodes));
+    console.log(`文件写入成功,inviteCode已经更新`);
 }
 
 function createInviteUser() {
