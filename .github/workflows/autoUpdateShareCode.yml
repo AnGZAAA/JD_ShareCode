@@ -10,15 +10,11 @@ jobs:
   createPullRequest:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - name: Use Node.js 10.x
         uses: actions/setup-node@v1
         with:
           node-version: 10.x
-      - name: set env
-        run: echo github.event.repository.owner
-        env:
-          user: ${{ secrets.NAME }}
       - name: npm install
         run: |
           npm install
@@ -46,7 +42,7 @@ jobs:
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
           DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
           DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
-      
+
       - uses: peter-evans/create-pull-request@v3
         with:
           token: ${{ secrets.TOKEN }}
