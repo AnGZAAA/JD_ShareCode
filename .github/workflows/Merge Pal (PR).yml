@@ -1,0 +1,26 @@
+name: Merge Pal (PR)
+
+on:
+  pull_request:
+    types:
+      - synchronize
+      - opened
+
+jobs:
+  test-this: # test one things
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "All ok"
+  test-that: # test other things
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "All ok"
+  mergepal-merge: # run merge pal in the end
+    runs-on: ubuntu-latest
+    whitelist:
+      - automated pr
+    steps:
+      - uses: actions/checkout@v1
+      - uses: maxkomarychev/merge-pal-action@vX.Y.Z
+        with:
+          token: ${{ secrets.TOKEN }}
