@@ -1,26 +1,25 @@
 name: Merge Pal (PR)
 
 on:
-  pull_request:
+  push: {} # update PR when base branch is updated
+  status: {} # try to merge when other checks are completed
+  pull_request_review: # try to merge after review
     types:
-      - synchronize
-      - opened
+      - submitted
+      - edited
+      - dismissed
+  pull_request: # try to merge if labels have changed (white/black list)
+    types:
+      - labeled
+      - unlabeled
 
 jobs:
-  test-this: # test one things
+  # thats's all. single step is needed - if PR is mergeable according to
+  # branch protection rules it will be merged automatically
+  mergepal:
     runs-on: ubuntu-latest
-    steps:
-      - run: echo "All ok"
-  test-that: # test other things
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "All ok"
-  mergepal-merge: # run merge pal in the end
-    runs-on: ubuntu-latest
-    whitelist:
-      - automated pr
     steps:
       - uses: actions/checkout@v1
       - uses: maxkomarychev/merge-pal-action@vX.Y.Z
         with:
-          token: ${{ secrets.TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
